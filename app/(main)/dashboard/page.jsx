@@ -1,11 +1,16 @@
+import { getUserAccounts } from "@/actions/dashboard";
+import AccountCard from "@/app/(main)/dashboard/_components/account-card";
 import CreateAccountDrawer from "@/components/create-account-drawer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 import React from "react";
 
-const DashboardPage = () => {
+const DashboardPage = async() => {
+  const accounts = await getUserAccounts();
+
+
   return (
-    <div className="px-5">
+    <div className="space-y-8">
       {/* Budget Progress */}
 
       {/* Overview */}
@@ -21,6 +26,11 @@ const DashboardPage = () => {
             </CardContent>
           </Card>
         </CreateAccountDrawer>
+
+        {accounts.length > 0 &&
+          accounts?.map((account) => (
+            <AccountCard key={account.id} account={account} />
+          ))}
       </div>
     </div>
   );
