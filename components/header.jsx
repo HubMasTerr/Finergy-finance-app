@@ -14,11 +14,11 @@ import { checkUser } from "@/lib/checkUser";
   const Header = async () => {
         await checkUser();
     return (
-      <div className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
+      <div className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b">
         <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/">
             <Image
-              src={"/logo.png"}
+              src={"/logo2.jpeg"}
               alt="finergy-logo"
               height={100}
               width={250}
@@ -38,7 +38,7 @@ import { checkUser } from "@/lib/checkUser";
                 </Button>
               </Link>
               <Link href="/transaction/create">
-                <Button className="flex items-center gap-2">
+                <Button className="flex items-center gap-2 ">
                   <PenBox size={18} />
                   <span className="hidden md:inline">Add Transaction</span>
                 </Button>
