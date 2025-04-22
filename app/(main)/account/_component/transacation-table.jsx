@@ -55,7 +55,7 @@ import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 20;
 
 const RECURRING_INTERVALS = {
   DAILY: "Daily",
@@ -197,14 +197,14 @@ export function TransactionTable({ transactions }) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-4">
       {deleteLoading && (
         <BarLoader className="mt-4" width={"100%"} color="#9333ea" />
       )}
       {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-4 ">
         <div className="relative flex-1">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-100" />
           <Input
             placeholder="Search transactions..."
             value={searchTerm}
@@ -212,7 +212,7 @@ export function TransactionTable({ transactions }) {
               setSearchTerm(e.target.value);
               setCurrentPage(1);
             }}
-            className="pl-8"
+            className="pl-8 text-gray-100"
           />
         </div>
         <div className="flex gap-2">
@@ -280,7 +280,7 @@ export function TransactionTable({ transactions }) {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[50px]">
+              <TableHead className="w-[50px] text-gray-100">
                 <Checkbox
                   checked={
                     selectedIds.length === paginatedTransactions.length &&
@@ -290,7 +290,7 @@ export function TransactionTable({ transactions }) {
                 />
               </TableHead>
               <TableHead
-                className="cursor-pointer"
+                className="cursor-pointer text-gray-100"
                 onClick={() => handleSort("date")}
               >
                 <div className="flex items-center">
@@ -303,12 +303,13 @@ export function TransactionTable({ transactions }) {
                     ))}
                 </div>
               </TableHead>
-              <TableHead>Description</TableHead>
+              <TableHead
+              className="text-gray-100">Description</TableHead>
               <TableHead
                 className="cursor-pointer"
                 onClick={() => handleSort("category")}
               >
-                <div className="flex items-center">
+                <div className="flex items-center text-gray-100">
                   Category
                   {sortConfig.field === "category" &&
                     (sortConfig.direction === "asc" ? (
@@ -319,7 +320,7 @@ export function TransactionTable({ transactions }) {
                 </div>
               </TableHead>
               <TableHead
-                className="cursor-pointer text-right"
+                className="cursor-pointer text-right text-gray-100"
                 onClick={() => handleSort("amount")}
               >
                 <div className="flex items-center justify-end">
@@ -332,7 +333,8 @@ export function TransactionTable({ transactions }) {
                     ))}
                 </div>
               </TableHead>
-              <TableHead>Recurring</TableHead>
+              <TableHead
+              className="text-gray-100">Recurring</TableHead>
               <TableHead className="w-[50px]" />
             </TableRow>
           </TableHeader>
@@ -341,7 +343,7 @@ export function TransactionTable({ transactions }) {
               <TableRow>
                 <TableCell
                   colSpan={7}
-                  className="text-center text-muted-foreground"
+                  className="text-center text-gray-100"
                 >
                   No transactions found
                 </TableCell>
@@ -349,17 +351,17 @@ export function TransactionTable({ transactions }) {
             ) : (
               paginatedTransactions.map((transaction) => (
                 <TableRow key={transaction.id}>
-                  <TableCell>
+                  <TableCell >
                     <Checkbox
                       checked={selectedIds.includes(transaction.id)}
                       onCheckedChange={() => handleSelect(transaction.id)}
                     />
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-gray-100">
                     {format(new Date(transaction.date), "PP")}
                   </TableCell>
-                  <TableCell>{transaction.description}</TableCell>
-                  <TableCell className="capitalize">
+                  <TableCell className="text-gray-100">{transaction.description}</TableCell>
+                  <TableCell className="capitalize text-gray-100">
                     <span
                       style={{
                         background: categoryColors[transaction.category],
@@ -411,7 +413,7 @@ export function TransactionTable({ transactions }) {
                         </Tooltip>
                       </TooltipProvider>
                     ) : (
-                      <Badge variant="outline" className="gap-1">
+                      <Badge variant="outline" className="gap-1 text-gray-100">
                         <Clock className="h-3 w-3" />
                         One-time
                       </Badge>
@@ -420,7 +422,7 @@ export function TransactionTable({ transactions }) {
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
+                        <Button variant="ghost" className="h-8 w-8 p-0 text-gray-100">
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -453,14 +455,14 @@ export function TransactionTable({ transactions }) {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-2 text-gray-100">
           <Button
             variant="outline"
             size="icon"
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4 text-black" />
           </Button>
           <span className="text-sm">
             Page {currentPage} of {totalPages}
@@ -471,7 +473,7 @@ export function TransactionTable({ transactions }) {
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4 text-black" />
           </Button>
         </div>
       )}

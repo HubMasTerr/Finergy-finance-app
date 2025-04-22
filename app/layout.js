@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 const inter = Inter({subsets: ["latin"]})
 
 export const metadata = {
-  title: "Finergy-Finance Tracker",
+  title: "Wealthix-Finance Tracker",
   description: "An AI powered Finance Tracker which allows us to manage our expenses efficiently",
 };
 
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className}`}>
         {/* Header */}
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen bg-gray-900 pt-4">{children}</main>
         <Toaster richColors />
         {/* Footer */}
         <footer className="bg-black py-12">

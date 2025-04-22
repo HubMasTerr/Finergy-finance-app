@@ -21,7 +21,7 @@ const DashboardPage = async() => {
 
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 bg-gray-900">
       {/* Budget Progress */}
 
       <BudgetProgress

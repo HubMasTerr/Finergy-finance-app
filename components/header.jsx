@@ -19,7 +19,7 @@ import { checkUser } from "@/lib/checkUser";
           <Link href="/">
             <Image
               src={"/logo2.jpeg"}
-              alt="finergy-logo"
+              alt="wealthix-logo"
               height={100}
               width={250}
               className="h-15 w-auto object-contain"
