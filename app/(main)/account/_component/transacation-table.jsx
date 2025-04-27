@@ -204,7 +204,7 @@ export function TransactionTable({ transactions }) {
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-4 ">
         <div className="relative flex-1">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-100" />
+          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search transactions..."
             value={searchTerm}
@@ -212,7 +212,7 @@ export function TransactionTable({ transactions }) {
               setSearchTerm(e.target.value);
               setCurrentPage(1);
             }}
-            className="pl-8 text-gray-100"
+            className="pl-8"
           />
         </div>
         <div className="flex gap-2">
@@ -280,7 +280,7 @@ export function TransactionTable({ transactions }) {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[50px] text-gray-100">
+              <TableHead className="w-[50px]">
                 <Checkbox
                   checked={
                     selectedIds.length === paginatedTransactions.length &&
@@ -290,7 +290,7 @@ export function TransactionTable({ transactions }) {
                 />
               </TableHead>
               <TableHead
-                className="cursor-pointer text-gray-100"
+                className="cursor-pointer"
                 onClick={() => handleSort("date")}
               >
                 <div className="flex items-center">
@@ -303,13 +303,12 @@ export function TransactionTable({ transactions }) {
                     ))}
                 </div>
               </TableHead>
-              <TableHead
-              className="text-gray-100">Description</TableHead>
+              <TableHead>Description</TableHead>
               <TableHead
                 className="cursor-pointer"
                 onClick={() => handleSort("category")}
               >
-                <div className="flex items-center text-gray-100">
+                <div className="flex items-center">
                   Category
                   {sortConfig.field === "category" &&
                     (sortConfig.direction === "asc" ? (
@@ -320,7 +319,7 @@ export function TransactionTable({ transactions }) {
                 </div>
               </TableHead>
               <TableHead
-                className="cursor-pointer text-right text-gray-100"
+                className="cursor-pointer text-right"
                 onClick={() => handleSort("amount")}
               >
                 <div className="flex items-center justify-end">
@@ -333,8 +332,7 @@ export function TransactionTable({ transactions }) {
                     ))}
                 </div>
               </TableHead>
-              <TableHead
-              className="text-gray-100">Recurring</TableHead>
+              <TableHead>Recurring</TableHead>
               <TableHead className="w-[50px]" />
             </TableRow>
           </TableHeader>
@@ -343,7 +341,7 @@ export function TransactionTable({ transactions }) {
               <TableRow>
                 <TableCell
                   colSpan={7}
-                  className="text-center text-gray-100"
+                  className="text-center text-muted-foreground"
                 >
                   No transactions found
                 </TableCell>
@@ -351,17 +349,17 @@ export function TransactionTable({ transactions }) {
             ) : (
               paginatedTransactions.map((transaction) => (
                 <TableRow key={transaction.id}>
-                  <TableCell >
+                  <TableCell>
                     <Checkbox
                       checked={selectedIds.includes(transaction.id)}
                       onCheckedChange={() => handleSelect(transaction.id)}
                     />
                   </TableCell>
-                  <TableCell className="text-gray-100">
+                  <TableCell>
                     {format(new Date(transaction.date), "PP")}
                   </TableCell>
-                  <TableCell className="text-gray-100">{transaction.description}</TableCell>
-                  <TableCell className="capitalize text-gray-100">
+                  <TableCell>{transaction.description}</TableCell>
+                  <TableCell className="capitalize">
                     <span
                       style={{
                         background: categoryColors[transaction.category],
@@ -413,7 +411,7 @@ export function TransactionTable({ transactions }) {
                         </Tooltip>
                       </TooltipProvider>
                     ) : (
-                      <Badge variant="outline" className="gap-1 text-gray-100">
+                      <Badge variant="outline" className="gap-1">
                         <Clock className="h-3 w-3" />
                         One-time
                       </Badge>
@@ -422,7 +420,7 @@ export function TransactionTable({ transactions }) {
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0 text-gray-100">
+                        <Button variant="ghost" className="h-8 w-8 p-0">
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -455,14 +453,14 @@ export function TransactionTable({ transactions }) {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 text-gray-100">
+        <div className="flex items-center justify-center gap-2">
           <Button
             variant="outline"
             size="icon"
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <ChevronLeft className="h-4 w-4 text-black" />
+            <ChevronLeft className="h-4 w-4" />
           </Button>
           <span className="text-sm">
             Page {currentPage} of {totalPages}
@@ -473,7 +471,7 @@ export function TransactionTable({ transactions }) {
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
-            <ChevronRight className="h-4 w-4 text-black" />
+            <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
       )}
