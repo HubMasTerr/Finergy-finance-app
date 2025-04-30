@@ -50,6 +50,9 @@ import { checkUser } from "@/lib/checkUser";
               <SignInButton forceRedirectUrl="/dashboard">
                 <Button variant="outline">Login</Button>
               </SignInButton>
+              <SignUpButton forceRedirectUrl="/dashboard">
+              <Button>SignUp</Button>
+              </SignUpButton>
             </SignedOut>
             {/* when signed in show the user info button */}
             <SignedIn>
