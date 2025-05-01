@@ -79,7 +79,9 @@ export function AddTransactionForm({
     loading: transactionLoading,
     fn: transactionFn,
     data: transactionResult,
-  } = useFetch(editMode ? (data) => updateTransaction(editId, data) : createTransaction);
+  } = useFetch(
+    editMode ? (data) => updateTransaction(editId, data) : createTransaction
+  );
 
   const onSubmit = (data) => {
     const formData = {
@@ -87,7 +89,7 @@ export function AddTransactionForm({
       amount: parseFloat(data.amount),
     };
 
-      transactionFn(formData);
+    transactionFn(formData);
   };
 
   const handleScanComplete = (scannedData) => {
@@ -136,7 +138,7 @@ export function AddTransactionForm({
           onValueChange={(value) => setValue("type", value)}
           defaultValue={type}
         >
-          <SelectTrigger>
+          <SelectTrigger className="w-full">
             <SelectValue placeholder="Select type" />
           </SelectTrigger>
           <SelectContent>
@@ -202,7 +204,7 @@ export function AddTransactionForm({
           onValueChange={(value) => setValue("category", value)}
           defaultValue={getValues("category")}
         >
-          <SelectTrigger>
+          <SelectTrigger className="w-full">
             <SelectValue placeholder="Select category" />
           </SelectTrigger>
           <SelectContent>
@@ -305,12 +307,12 @@ export function AddTransactionForm({
         <Button
           type="button"
           variant="outline"
-          className="w-full"
+          className="flex-1"
           onClick={() => router.back()}
         >
           Cancel
         </Button>
-        <Button type="submit" className="w-full" disabled={transactionLoading}>
+        <Button type="submit" className="flex-1" disabled={transactionLoading}>
           {transactionLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
