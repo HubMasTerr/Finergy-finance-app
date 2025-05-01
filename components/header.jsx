@@ -1,4 +1,10 @@
-import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
@@ -12,13 +18,9 @@ const Header = async () => {
     <div className="fixed top-0 w-full bg-[var(--background)]/80 backdrop-blur-md z-50 border-b border-[var(--border)]">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/">
-          <Image
-            src={"/logo.png"}
-            alt="finergy-logo"
-            height={100}
-            width={250}
-            className="h-15 w-auto object-contain"
-          />
+          <div className="text-2xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-blue-700 bg-clip-text text-transparent">
+            FINERGY
+          </div>
         </Link>
 
         <div className="flex items-center space-x-4">
@@ -28,7 +30,10 @@ const Header = async () => {
               href="/dashboard"
               className="text-[var(--foreground)] hover:text-[var(--primary)] flex items-center gap-2"
             >
-              <Button variant="outline" className="border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--secondary)]">
+              <Button
+                variant="outline"
+                className="border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--secondary)]"
+              >
                 <LayoutDashboard size={18} />
                 <span className="hidden md:inline">Dashboard</span>
               </Button>
@@ -43,7 +48,10 @@ const Header = async () => {
 
           <SignedOut>
             <SignInButton forceRedirectUrl="/dashboard">
-              <Button variant="outline" className="border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--secondary)]">
+              <Button
+                variant="outline"
+                className="border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--secondary)]"
+              >
                 Login
               </Button>
             </SignInButton>

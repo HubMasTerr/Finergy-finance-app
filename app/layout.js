@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-white text-black dark:bg-gray-950 dark:text-white transition-colors duration-300`}>
+      <body className={`${inter.className} bg-white text-black dark:bg-black dark:text-white transition-colors duration-300`}>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             {/* Header */}
             <Header />
