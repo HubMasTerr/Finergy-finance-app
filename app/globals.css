@@ -164,3 +164,9 @@
   background-size: 200% 200%;
   animation: gradientMove 3s ease infinite;
 }
+
+
+.scrolled {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
