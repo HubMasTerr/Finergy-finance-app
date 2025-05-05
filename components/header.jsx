@@ -68,4 +68,3 @@ const Header = async () => {
   );
 };
 export default Header;
-// installed framer-motion, changed landing page layout and added annimation, layout of navebar changed to align content to logo, alignment of other pages also done
